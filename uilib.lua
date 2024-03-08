@@ -178,7 +178,7 @@ function library:CreateWindow(tag,size,position)
 
 			local section = {}
 
-			function section:AddSetting(settingname:string,settingtype:string,default:any,arg1:number,arg2:number)
+			function section:AddSetting(settingname:string,settingtype:string,default:any,arg1:number,arg2:number,usesettingname:boolean)
 				local SettingContainer=Instance.new("Frame")
 				SettingContainer.Size=UDim2.new(0,172,0,0)
 				SettingContainer.Parent=SectionSettingContainer
@@ -192,16 +192,18 @@ function library:CreateWindow(tag,size,position)
 				NewUILayout.Parent=SettingContainerInset
 				NewUILayout.FillDirection=Enum.FillDirection.Vertical
 				NewUILayout.Padding=UDim.new(0,4)
-				local SettingName=WindowText:Clone()
-				SettingName.Text=settingname
-				SettingName.Parent=SettingContainerInset
-				SettingName.LayoutOrder=#SettingContainerInset:GetChildren()
 				local function incrementsize(val)
 					SettingContainer.Size+=UDim2.new(0,0,0,val)
 					SectionContainer.Size+=UDim2.new(0,0,0,val)
 					SectionSettingContainer.Size+=UDim2.new(0,0,0,val)
 				end
-				incrementsize(27)
+				if usesettingname then
+					local SettingName=WindowText:Clone()
+					SettingName.Text=settingname
+					SettingName.Parent=SettingContainerInset
+					SettingName.LayoutOrder=#SettingContainerInset:GetChildren()
+					incrementsize(27)
+				end
 				createdsections[tabname][sectionname][settingname]={onUpdate={}}
 				local settingvals=createdsections[tabname][sectionname][settingname]
 				if settingtype=="Toggle" then
@@ -352,7 +354,7 @@ function library:CreateWindow(tag,size,position)
 						incrementsize(16)
 					end
 				elseif settingtype=="String" then
-					local default = default or 1
+					local default = default or ""
 					local Setting=Instance.new("TextBox")
 					Setting.LayoutOrder=#SettingContainerInset:GetChildren()
 					Setting.Parent=SettingContainerInset

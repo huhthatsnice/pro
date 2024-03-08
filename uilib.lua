@@ -346,9 +346,7 @@ function library:CreateWindow(tag,size,position)
 						mouse.Button1Up:Connect(release)
 						SettingInteract.MouseButton1Up:Connect(release)
 						Setting.FocusLost:Connect(function()
-							if tonumber(Setting.Text) then
-								update(tonumber(Setting.Text))
-							end
+							update(tonumber(Setting.Text))
 						end)
 						incrementsize(16)
 					end

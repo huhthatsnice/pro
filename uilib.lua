@@ -351,6 +351,28 @@ function library:CreateWindow(tag,size,position)
 						update(default)
 						incrementsize(16)
 					end
+				elseif settingtype=="String" then
+					local default = default or 1
+					local Setting=Instance.new("TextBox")
+					Setting.LayoutOrder=#SettingContainerInset:GetChildren()
+					Setting.Parent=SettingContainerInset
+					Setting.Size=UDim2.new(0,50,0,23)
+					Setting.Text=tostring(default)
+					Setting.BackgroundColor3=Color3.fromRGB(15,15,15)
+					Setting.BorderSizePixel=2
+					Setting.BorderColor3=Color3.fromRGB(50,50,50)
+					incrementsize(27)
+					settingvals.Value=default
+					local function update(val)
+						settingvals.Value=val
+						for i,v in pairs(settingvals.onUpdate) do
+							v()
+						end
+					end
+					Setting.FocusLost:Connect(function()
+						update(Setting.Text)
+					end)
+					settingvals.Update=update
 				end
 				return settingvals
 			end

@@ -348,6 +348,7 @@ function library:CreateWindow(tag,size,position)
 						Setting.FocusLost:Connect(function()
 							update(tonumber(Setting.Text))
 						end)
+						update(default)
 						incrementsize(16)
 					end
 				end

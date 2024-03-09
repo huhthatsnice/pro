@@ -359,12 +359,11 @@ function library:CreateWindow(tag,size,position)
 					local Setting=Instance.new("TextBox")
 					Setting.LayoutOrder=#SettingContainerInset:GetChildren()
 					Setting.Parent=SettingContainerInset
-					Setting.Size=UDim2.new(0,50,0,23)
+					Setting.Size=UDim2.new(0,100,0,23)
 					Setting.Text=tostring(default)
 					Setting.BackgroundColor3=Color3.fromRGB(15,15,15)
 					Setting.BorderSizePixel=2
 					Setting.BorderColor3=Color3.fromRGB(50,50,50)
-					Setting.TextScaled=true
 					Setting.MultiLine=true
 					incrementsize(27)
 					settingvals.Value=default

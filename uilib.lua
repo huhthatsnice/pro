@@ -34,13 +34,15 @@ function library:CreateWindow(tag,size,position)
 
 	local window = {SelectedTab="",isOpen=true,ScreenGui=screengui}
 
-	local Background=Instance.new("Frame")
+	local Background=Instance.new("ScrollingFrame")
 	Background.BorderSizePixel=2
 	Background.BackgroundColor3=Color3.fromRGB(15,15,15)
 	Background.Size=size
 	Background.Position=position
 	Background.BorderSizePixel=1
 	Background.BorderColor3=Color3.fromRGB(50,50,50)
+	Background.ScrollBarThickness=2
+	Background.VerticalScrollBarPosition=Enum.VerticalScrollBarPosition.Right
 	local SettingsContainer=Background:Clone()
 	SettingsContainer.Parent=Background
 	SettingsContainer.Size=Background.Size-UDim2.new(0,8,0,54)
@@ -329,6 +331,7 @@ function library:CreateWindow(tag,size,position)
 									v()
 								end
 							else
+								settingvals.Value=val
 								SettingSlider.Position=UDim2.new(0,invlerp(arg1,arg2,math.clamp(val,arg1,arg2))*160,0,2)
 							end
 						end
@@ -365,6 +368,7 @@ function library:CreateWindow(tag,size,position)
 					Setting.BorderSizePixel=2
 					Setting.BorderColor3=Color3.fromRGB(50,50,50)
 					Setting.MultiLine=true
+					Setting.ClearTextOnFocus=false
 					incrementsize(27)
 					settingvals.Value=default
 					local function update(val)

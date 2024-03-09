@@ -179,7 +179,7 @@ function library:CreateWindow(tag,size,position)
 			local section = {}
 
 			function section:AddSetting(settingname:string,settingtype:string,default:any,arg1:number,arg2:number,usesettingname:boolean)
-				usesettingname=usesettingname==nil and true or usesettingname
+				usesettingname=if usesettingname==nil then true else usesettingname
 				local SettingContainer=Instance.new("Frame")
 				SettingContainer.Size=UDim2.new(0,172,0,0)
 				SettingContainer.Parent=SectionSettingContainer

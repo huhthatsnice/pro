@@ -352,7 +352,7 @@ function library:CreateWindow(tag,size,position)
 							update(tonumber(Setting.Text))
 						end)
 						update(default)
-						incrementsize(16)
+						incrementsize(21)
 					end
 				elseif settingtype=="String" then
 					local default = default or ""

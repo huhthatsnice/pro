@@ -229,6 +229,11 @@ function library:CreateWindow(tag,size,position)
 					Setting.AutoButtonColor=false
 					incrementsize(19)
 					settingvals.Value=if default then true else false
+					if settingvals.Value then
+						Setting.BackgroundColor3=Color3.fromRGB(75,75,75)
+					else
+						Setting.BackgroundColor3=Color3.fromRGB(15,15,15)
+					end
 					local function update()
 						settingvals.Value=not settingvals.Value
 						for i,v in pairs(settingvals.onUpdate) do
@@ -241,7 +246,7 @@ function library:CreateWindow(tag,size,position)
 						end
 					end
 					Setting.MouseButton1Down:Connect(update)
-					settingvals.Update=update
+					settingvals.Update=update 
 				elseif settingtype=="Button" then
 					local Setting=Instance.new("TextButton")
 					Setting.LayoutOrder=#SettingContainerInset:GetChildren()

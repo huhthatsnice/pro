@@ -332,7 +332,7 @@ function library:CreateWindow(tag,size,position)
 						local mxrel
 						local arg3len=0
 						local arg3str=tostring(arg3)
-						while arg3str:sub(1,1)~="." do
+						while arg3str:sub(1,1)~="." and #arg3str>0 do
 							arg3str=arg3str:sub(2,-1)
 						end
 						arg3len=#arg3str-1

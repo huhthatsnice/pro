@@ -34,16 +34,19 @@ function library:CreateWindow(tag,size,position)
 
 	local window = {SelectedTab="",isOpen=true,ScreenGui=screengui}
 
-	local Background=Instance.new("ScrollingFrame")
+	local Background=Instance.new("Frame")
 	Background.BorderSizePixel=2
 	Background.BackgroundColor3=Color3.fromRGB(15,15,15)
 	Background.Size=size
 	Background.Position=position
 	Background.BorderSizePixel=1
 	Background.BorderColor3=Color3.fromRGB(50,50,50)
-	Background.ScrollBarThickness=2
-	Background.VerticalScrollBarPosition=Enum.VerticalScrollBarPosition.Right
-	local SettingsContainer=Background:Clone()
+	local SettingsContainer=Instance.new("ScrollingFrame")
+	SettingsContainer.BackgroundColor3=Color3.fromRGB(15,15,15)
+	SettingsContainer.BorderSizePixel=1
+	SettingsContainer.BorderColor3=Color3.fromRGB(50,50,50)
+	SettingsContainer.ScrollBarThickness=2
+	SettingsContainer.VerticalScrollBarPosition=Enum.VerticalScrollBarPosition.Right
 	SettingsContainer.Parent=Background
 	SettingsContainer.Size=Background.Size-UDim2.new(0,8,0,54)
 	SettingsContainer.Position=UDim2.new(0,4,0,50)

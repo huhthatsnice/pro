@@ -187,7 +187,7 @@ function library:CreateWindow(tag,size,position)
 
 			local section = {}
 
-			function section:AddSetting(settingname:string,settingtype:string,default:any,arg1:number,arg2:number,usesettingname:boolean)
+			function section:AddSetting(settingname:string,settingtype:string,default:any,arg1:number,arg2:number,arg3:number,usesettingname:boolean)
 				usesettingname=if usesettingname==nil then true else usesettingname
 				local SettingContainer=Instance.new("Frame")
 				SettingContainer.Size=UDim2.new(0,172,0,0)
@@ -299,6 +299,7 @@ function library:CreateWindow(tag,size,position)
 					elseif settingtype=="Slider" then
 						local arg1 = arg1 or 0
 						local arg2 = arg2 or 10
+						local arg3 = arg3 or math.huge
 						local default = default and math.clamp(default,arg1,arg2) or (arg1+arg2)/2
 						local SettingInset=Instance.new("Frame")
 						SettingInset.Parent=SettingContainerInset
@@ -329,11 +330,27 @@ function library:CreateWindow(tag,size,position)
 						local drag = false
 						local pmxrel
 						local mxrel
+						local arg3len=0
+						local arg3str=tostring(arg3)
+						while arg3str:sub(1,1)~="." do
+							arg3str=arg3str:sub(2,-1)
+						end
+						arg3len=#arg3str-1
 						local update = function(val)
 							if not val then
 								local percent = mxrel/160
-								settingvals.Value=lerp(arg1,arg2,percent)
-								Setting.Text=tostring(settingvals.Value)
+								if arg3~=math.huge then
+									settingvals.Value=math.round(lerp(arg1,arg2,percent)/arg3)*arg3
+									local text = tostring(settingvals.Value)
+									local find,_=text:find(".")
+									find = find+arg3len or -1
+									text = text:sub(1,find)
+									Setting.Text=text
+								else
+									settingvals.Value=lerp(arg1,arg2,percent)
+									Setting.Text=tostring(settingvals.Value)
+								end
+								
 								for i,v in pairs(settingvals.onUpdate) do
 									v()
 								end

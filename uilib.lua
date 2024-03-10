@@ -51,7 +51,11 @@ function library:CreateWindow(tag,size,position)
 	SettingsContainer.Size=Background.Size-UDim2.new(0,8,0,54)
 	SettingsContainer.Position=UDim2.new(0,4,0,50)
 	SettingsContainer.BorderSizePixel=2
-	local TabHolder=SettingsContainer:Clone()
+	local TabHolder=Instance.new("Frame")
+	TabHolder.BackgroundColor3=Color3.fromRGB(15,15,15)
+	TabHolder.BorderSizePixel=1
+	TabHolder.BorderColor3=Color3.fromRGB(50,50,50)
+	TabHolder.Parent=Background
 	TabHolder.Parent=Background
 	TabHolder.Position=UDim2.new(0,4,0,28)
 	TabHolder.Size=UDim2.new(0,367,0,20)

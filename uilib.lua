@@ -343,7 +343,7 @@ function library:CreateWindow(tag,size,position)
 									settingvals.Value=math.round(lerp(arg1,arg2,percent)/arg3)*arg3
 									local text = tostring(settingvals.Value)
 									local find,_=text:find(".")
-									find = find+arg3len or -1
+									find = find+arg3len+2 or -1
 									text = text:sub(1,find)
 									Setting.Text=text
 								else

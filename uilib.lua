@@ -196,7 +196,7 @@ function library:CreateWindow(tag,size,position)
 				local SettingContainer=Instance.new("Frame")
 				SettingContainer.Size=UDim2.new(0,172,0,0)
 				SectionSettingContainer.Size+=UDim2.new(0,0,0,4)
-				SectionSettingContainer.Size+=UDim2.new(0,0,0,4)
+				SectionContainerInset.Size+=UDim2.new(0,0,0,4)
 				SettingContainer.Parent=SectionSettingContainer
 				SettingContainer.BackgroundTransparency=1
 				local SettingContainerInset=Instance.new("Frame")
@@ -209,7 +209,6 @@ function library:CreateWindow(tag,size,position)
 				NewUILayout.FillDirection=Enum.FillDirection.Vertical
 				NewUILayout.Padding=UDim.new(0,4)
 				local function incrementsize(val)
-					print(val)
 					SettingContainer.Size+=UDim2.new(0,0,0,val)
 					SectionContainer.Size+=UDim2.new(0,0,0,val)
 					SectionSettingContainer.Size+=UDim2.new(0,0,0,val)

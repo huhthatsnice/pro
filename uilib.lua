@@ -78,11 +78,11 @@ function library:CreateWindow(tag,size,position)
 	UILayout.SortOrder=Enum.SortOrder.LayoutOrder
 	local NewUILayout=UILayout:Clone()
 	NewUILayout.FillDirection=Enum.FillDirection.Vertical
-	NewUILayout.Padding=UDim.new(0,6)
+	NewUILayout.Padding=UDim.new(0,8)
 	NewUILayout.Parent=SettingsContainerInset1
 	local NewUILayout=UILayout:Clone()
 	NewUILayout.FillDirection=Enum.FillDirection.Vertical
-	NewUILayout.Padding=UDim.new(0,6)
+	NewUILayout.Padding=UDim.new(0,8)
 	NewUILayout.Parent=SettingsContainerInset2
 	local WindowText=Instance.new("TextButton")
 	WindowText.Parent=Background
@@ -196,7 +196,6 @@ function library:CreateWindow(tag,size,position)
 				local SettingContainer=Instance.new("Frame")
 				SettingContainer.Size=UDim2.new(0,172,0,0)
 				SectionSettingContainer.Size+=UDim2.new(0,0,0,4)
-				SectionContainerInset.Size+=UDim2.new(0,0,0,4)
 				SettingContainer.Parent=SectionSettingContainer
 				SettingContainer.BackgroundTransparency=1
 				local SettingContainerInset=Instance.new("Frame")

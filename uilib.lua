@@ -168,12 +168,12 @@ function library:CreateWindow(tag,size,position)
 		local tab = {}
 		function tab:AddSection(sectionname:string)
 			local SectionContainerInset=Instance.new("Frame")
-			SectionContainerInset.Size=UDim2.new(0,176,0,33+4)
+			SectionContainerInset.Size=UDim2.new(0,176,0,33+8)
 			SectionContainerInset.BackgroundTransparency=1
 			local SectionContainer=Instance.new("Frame")
 			SectionContainer.BackgroundColor3=Color3.fromRGB(15,15,15)
 			SectionContainer.Size=UDim2.new(0,176,0,33)
-			SectionContainer.Position=UDim2.new(0,0,0,4)
+			SectionContainer.Position=UDim2.new(0,0,0,8)
 			SectionContainer.BorderSizePixel=2
 			SectionContainer.BorderColor3=Color3.fromRGB(50,50,50)
 			SectionContainer.Parent=SectionContainerInset

@@ -227,7 +227,7 @@ function library:CreateWindow(tag,size,position)
 					Setting.BorderSizePixel=2
 					Setting.BorderColor3=Color3.fromRGB(50,50,50)
 					Setting.AutoButtonColor=false
-					incrementsize(19)
+					incrementsize(21)
 					settingvals.Value=if default then true else false
 					if settingvals.Value then
 						Setting.BackgroundColor3=Color3.fromRGB(75,75,75)

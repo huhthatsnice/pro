@@ -169,7 +169,6 @@ function library:CreateWindow(tag,size,position)
 		function tab:AddSection(sectionname:string)
 			local SectionContainerInset=Instance.new("Frame")
 			SectionContainerInset.Size=UDim2.new(0,176,0,33+4)
-			SectionContainerInset.Parent=SectionContainerInset
 			SectionContainerInset.BackgroundTransparency=1
 			local SectionContainer=Instance.new("Frame")
 			SectionContainer.BackgroundColor3=Color3.fromRGB(15,15,15)

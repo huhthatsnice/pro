@@ -78,11 +78,11 @@ function library:CreateWindow(tag,size,position)
 	UILayout.SortOrder=Enum.SortOrder.LayoutOrder
 	local NewUILayout=UILayout:Clone()
 	NewUILayout.FillDirection=Enum.FillDirection.Vertical
-	NewUILayout.Padding=UDim.new(0,12)
+	NewUILayout.Padding=UDim.new(0,0)
 	NewUILayout.Parent=SettingsContainerInset1
 	local NewUILayout=UILayout:Clone()
 	NewUILayout.FillDirection=Enum.FillDirection.Vertical
-	NewUILayout.Padding=UDim.new(0,12)
+	NewUILayout.Padding=UDim.new(0,0)
 	NewUILayout.Parent=SettingsContainerInset2
 	local WindowText=Instance.new("TextButton")
 	WindowText.Parent=Background
@@ -167,12 +167,17 @@ function library:CreateWindow(tag,size,position)
 
 		local tab = {}
 		function tab:AddSection(sectionname:string)
+			local SectionContainerInset=Instance.new("Frame")
+			SectionContainerInset.Size=UDim2.new(0,176,0,33+4)
+			SectionContainerInset.Parent=SectionContainerInset
+			SectionContainerInset.BackgroundTransparency=1
 			local SectionContainer=Instance.new("Frame")
 			SectionContainer.BackgroundColor3=Color3.fromRGB(15,15,15)
 			SectionContainer.Size=UDim2.new(0,176,0,33)
 			SectionContainer.Position=UDim2.new(0,0,0,4)
 			SectionContainer.BorderSizePixel=2
 			SectionContainer.BorderColor3=Color3.fromRGB(50,50,50)
+			SectionContainer.Parent=SectionContainerInset
 			local SectionSettingContainer = SectionContainer:Clone()
 			SectionSettingContainer.Position=UDim2.new(0,0,0,25)
 			SectionSettingContainer.Size=SectionContainer.Size-UDim2.new(0,0,0,25)
@@ -425,9 +430,9 @@ function library:CreateWindow(tag,size,position)
 			end
 			if window.SelectedTab == tabname then
 				local nextcont = SettingsContainerInset1.UIListLayout.AbsoluteContentSize.Y<=SettingsContainerInset2.UIListLayout.AbsoluteContentSize.Y and SettingsContainerInset1 or SettingsContainerInset2
-				SectionContainer.Parent=nextcont
+				SectionContainerInset.Parent=nextcont
 			end
-			table.insert(createdsections[tabname].Instances,SectionContainer)
+			table.insert(createdsections[tabname].Instances,SectionContainerInset)
 			createdsections[tabname][sectionname]={}
 			return section
 		end

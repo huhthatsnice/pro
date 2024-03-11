@@ -167,12 +167,16 @@ function library:CreateWindow(tag,size,position)
 
 		local tab = {}
 		function tab:AddSection(sectionname:string)
+			local SectionContainerInset=Instance.new("Frame")
+			SectionContainerInset.Size=UDim2.new(0,176,0,33+4)
+			SectionContainerInset.BackgroundTransparency=1
 			local SectionContainer=Instance.new("Frame")
 			SectionContainer.BackgroundColor3=Color3.fromRGB(15,15,15)
 			SectionContainer.Size=UDim2.new(0,176,0,33)
-			SectionContainer.Position=UDim2.new(0,4,0,0)
+			SectionContainer.Position=UDim2.new(0,0,0,4)
 			SectionContainer.BorderSizePixel=2
 			SectionContainer.BorderColor3=Color3.fromRGB(50,50,50)
+			SectionContainer.Parent=SectionContainerInset
 			local SectionSettingContainer = SectionContainer:Clone()
 			SectionSettingContainer.Position=UDim2.new(0,0,0,25)
 			SectionSettingContainer.Size=SectionContainer.Size-UDim2.new(0,0,0,25)
@@ -191,6 +195,7 @@ function library:CreateWindow(tag,size,position)
 				usesettingname=if usesettingname==nil then true else usesettingname
 				local SettingContainer=Instance.new("Frame")
 				SettingContainer.Size=UDim2.new(0,172,0,0)
+				SectionSettingContainer.Size+=UDim2.new(0,0,0,4)
 				SectionSettingContainer.Size+=UDim2.new(0,0,0,4)
 				SettingContainer.Parent=SectionSettingContainer
 				SettingContainer.BackgroundTransparency=1
@@ -357,7 +362,7 @@ function library:CreateWindow(tag,size,position)
 									settingvals.Value=lerp(arg1,arg2,percent)
 									Setting.Text=tostring(settingvals.Value)
 								end
-								
+
 								for i,v in pairs(settingvals.onUpdate) do
 									v()
 								end
@@ -426,7 +431,7 @@ function library:CreateWindow(tag,size,position)
 			end
 			if window.SelectedTab == tabname then
 				local nextcont = SettingsContainerInset1.UIListLayout.AbsoluteContentSize.Y<=SettingsContainerInset2.UIListLayout.AbsoluteContentSize.Y and SettingsContainerInset1 or SettingsContainerInset2
-				SectionContainer.Parent=nextcont
+				SectionContainerInset.Parent=nextcont
 			end
 			table.insert(createdsections[tabname].Instances,SectionContainer)
 			createdsections[tabname][sectionname]={}

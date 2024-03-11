@@ -191,6 +191,7 @@ function library:CreateWindow(tag,size,position)
 				usesettingname=if usesettingname==nil then true else usesettingname
 				local SettingContainer=Instance.new("Frame")
 				SettingContainer.Size=UDim2.new(0,172,0,0)
+				SectionSettingContainer.Size+=UDim2.new(0,0,0,4)
 				SettingContainer.Parent=SectionSettingContainer
 				SettingContainer.BackgroundTransparency=1
 				local SettingContainerInset=Instance.new("Frame")
@@ -203,6 +204,7 @@ function library:CreateWindow(tag,size,position)
 				NewUILayout.FillDirection=Enum.FillDirection.Vertical
 				NewUILayout.Padding=UDim.new(0,4)
 				local function incrementsize(val)
+					print(val)
 					SettingContainer.Size+=UDim2.new(0,0,0,val)
 					SectionContainer.Size+=UDim2.new(0,0,0,val)
 					SectionSettingContainer.Size+=UDim2.new(0,0,0,val)
@@ -227,7 +229,7 @@ function library:CreateWindow(tag,size,position)
 					Setting.BorderSizePixel=2
 					Setting.BorderColor3=Color3.fromRGB(50,50,50)
 					Setting.AutoButtonColor=false
-					incrementsize(21)
+					incrementsize(19)
 					settingvals.Value=if default then true else false
 					if settingvals.Value then
 						Setting.BackgroundColor3=Color3.fromRGB(75,75,75)

@@ -1,4 +1,5 @@
 local screengui = Instance.new("ScreenGui")
+screengui.IgnoreGuiInset=true
 local plr = game:GetService("Players").LocalPlayer
 local mouse = plr:GetMouse()
 local rs = game:GetService("RunService")
@@ -45,8 +46,9 @@ function library:CreateWindow(tag,size,position)
 	SettingsContainer.BackgroundColor3=Color3.fromRGB(15,15,15)
 	SettingsContainer.BorderSizePixel=1
 	SettingsContainer.BorderColor3=Color3.fromRGB(50,50,50)
-	SettingsContainer.ScrollBarThickness=2
+	SettingsContainer.ScrollBarThickness=0
 	SettingsContainer.VerticalScrollBarPosition=Enum.VerticalScrollBarPosition.Right
+	SettingsContainer.AutomaticCanvasSize=Enum.AutomaticSize.Y
 	SettingsContainer.Parent=Background
 	SettingsContainer.Size=Background.Size-UDim2.new(0,8,0,54)
 	SettingsContainer.Position=UDim2.new(0,4,0,50)
@@ -139,7 +141,7 @@ function library:CreateWindow(tag,size,position)
 		NewTab.LayoutOrder=tabposition
 		NewTab.Parent=TabHolder
 		NewTab.Position=UDim2.new(0,2,0,0)
-		NewTab.Size=UDim2.new(0,80,0,20)
+		NewTab.Size=UDim2.new(0,60,0,20)
 		NewTab.BackgroundColor3=Color3.fromRGB(15,15,15)
 		NewTab.BorderColor3=Color3.fromRGB(50,50,50)
 		NewTab.BorderSizePixel=2
@@ -168,12 +170,12 @@ function library:CreateWindow(tag,size,position)
 		local tab = {}
 		function tab:AddSection(sectionname:string)
 			local SectionContainerInset=Instance.new("Frame")
-			SectionContainerInset.Size=UDim2.new(0,176,0,33+8)
+			SectionContainerInset.Size=UDim2.new(0,176,0,33+6)
 			SectionContainerInset.BackgroundTransparency=1
 			local SectionContainer=Instance.new("Frame")
 			SectionContainer.BackgroundColor3=Color3.fromRGB(15,15,15)
 			SectionContainer.Size=UDim2.new(0,176,0,33)
-			SectionContainer.Position=UDim2.new(0,0,0,8)
+			SectionContainer.Position=UDim2.new(0,0,0,6)
 			SectionContainer.BorderSizePixel=2
 			SectionContainer.BorderColor3=Color3.fromRGB(50,50,50)
 			SectionContainer.Parent=SectionContainerInset
@@ -244,7 +246,7 @@ function library:CreateWindow(tag,size,position)
 					local function update()
 						settingvals.Value=not settingvals.Value
 						for i,v in pairs(settingvals.onUpdate) do
-							v()
+							task.spawn(v)
 						end
 						if settingvals.Value then
 							Setting.BackgroundColor3=Color3.fromRGB(75,75,75)
@@ -267,7 +269,7 @@ function library:CreateWindow(tag,size,position)
 					incrementsize(19)
 					local function update()
 						for i,v in pairs(settingvals.onUpdate) do
-							v()
+							task.spawn(v)
 						end
 					end
 					Setting.MouseButton1Down:Connect(function()
@@ -298,7 +300,7 @@ function library:CreateWindow(tag,size,position)
 								Setting.Text=tostring(val)
 								lasttext=Setting.text
 								for i,v in pairs(settingvals.onUpdate) do
-									v()
+									task.spawn(v)
 								end
 							else
 								Setting.Text=lasttext
@@ -364,7 +366,7 @@ function library:CreateWindow(tag,size,position)
 								end
 
 								for i,v in pairs(settingvals.onUpdate) do
-									v()
+									task.spawn(v)
 								end
 							else
 								settingvals.Value=val

